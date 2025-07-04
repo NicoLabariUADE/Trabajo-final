@@ -39,3 +39,4 @@ python manage.py migrate
 Python manage.py runserver
 
 ## 📸 Video
+https://drive.google.com/file/d/1XoPTV21_4ZYkCxlKJSB3IrPDBjduY70N/view?usp=sharing
