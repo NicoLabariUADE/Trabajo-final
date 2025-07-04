@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}Inicio{% endblock %}
+
+{% block content %}
+<h1>Bienvenid@!!!</h1>
+
+{% if user.is_authenticated %}
+  <p>Gracias por crearte una cuenta, {{ user.username }}. Ahora podés acceder a todas las funciones de la página, como crear, editar y eliminar publicaciones, y personalizar tu perfil.</p>
+{% else %}
+  <p>Este es el trabajo final del curso de Python de Coderhouse.</p>
+  <p>Proba crear una cuenta para hacer uso de todas las funciones de la pagina.</p>
+   <p><a href="{% url 'signup' %}">¡Creá una cuenta aca para comenzar a explorar!</a> 🚀</p>
+{% endif %}
+
+<hr>
+
+<h2>Últimas publicaciones</h2>
+{% if latest_pages %}
+  <ul>
+    {% for page in latest_pages %}
+      <li>
+        <a href="{% url 'page_detail' page.pk %}">{{ page.title }}</a> - {{ page.created_at|date:"d/m/Y" }}
+      </li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p>No hay publicaciones recientes.</p>
+{% endif %}
+{% endblock %}
+

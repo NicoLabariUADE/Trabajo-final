@@ -1,0 +1,57 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <title>{% block title %}Mi Blog{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <style>
+        nav {
+            display: flex;
+            justify-content: space-between;
+            background-color: #222;
+            padding: 10px;
+        }
+        nav .nav-left a,
+        nav .nav-right a {
+            color: white;
+            margin: 0 8px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        nav .nav-left a:hover,
+        nav .nav-right a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-left">
+            <a href="{% url 'home' %}">Home</a>
+            <a href="{% url 'about' %}">About</a>
+            <a href="{% url 'pages_list' %}">Pages</a>
+        </div>
+
+        <div class="nav-right">
+            {% if user.is_authenticated %}
+                 <a href="{% url 'profile' %}">Perfil</a>
+
+                 <form method="post" action="{% url 'logout' %}" style="display:inline;">
+            {% csrf_token %}
+            <button type="submit" style="background:none; border:none; cursor:pointer; color:blue; text-decoration:underline; padding:0; font:inherit;">
+                Logout
+            </button>
+          </form>
+         {% else %}
+             <a href="{% url 'login' %}">Login</a>
+             <a href="{% url 'signup' %}">Sign up</a>
+            {% endif %}
+        </div>
+    </nav>
+
+    <hr />
+    {% block content %}
+    {% endblock %}
+</body>
+</html>

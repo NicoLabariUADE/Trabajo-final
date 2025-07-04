@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Perfil{% endblock %}
+
+{% block content %}
+  <h1>Mi perfil</h1>
+
+  <p><strong>Nombre de usuario:</strong> {{ user.username }}</p>
+  <p><strong>Email:</strong> {{ user.email }}</p>
+  <p><strong>Nombre:</strong> {{ user.first_name }}</p>
+  <p><strong>Apellido:</strong> {{ user.last_name }}</p>
+  <p><strong>Biografía:</strong> {{ user.profile.bio }}</p>
+  <p><strong>Fecha de nacimiento:</strong> {{ user.profile.birthdate }}</p>
+
+  {% if user.profile.avatar %}
+    <p><strong>Avatar:</strong><br><img src="{{ user.profile.avatar.url }}" alt="Avatar" width="150"></p>
+  {% endif %}
+
+  <a href="{% url 'profile_edit' %}">✏️ Editar perfil</a> |
+  <a href="{% url 'password_change' %}">🔒 Cambiar contraseña</a>
+{% endblock %}
+
