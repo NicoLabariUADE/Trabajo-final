@@ -13,7 +13,6 @@ class Profile(models.Model):
     def __str__(self):
         return f"Perfil de {self.user.username}"
 
-# Crear el profile automáticamente al crear un user
 @receiver(post_save, sender=User)
 def create_or_update_user_profile(sender, instance, created, **kwargs):
     if created:
