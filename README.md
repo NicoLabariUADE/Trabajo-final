@@ -25,17 +25,17 @@ Nicolas Labari Fabressi
 1. Cloná el repositorio:
 https://github.com/NicoLabariUADE/Trabajo-final.git
 
-2. Crear entorno virtual
-python -m venv env
+2. Crear entorno virtual:
+python -m venv env,
 ./env/Scripts/activate
 
-3. Instalar dependencias
+3. Instalar dependencias:
 pip install -r requirements.txt
 
-4. Migracion de DB
+4. Migracion de DB:
 python manage.py migrate
 
-5. Ejecutar servidor
+5. Ejecutar servidor:
 Python manage.py runserver
 
 ## 📸 Video
